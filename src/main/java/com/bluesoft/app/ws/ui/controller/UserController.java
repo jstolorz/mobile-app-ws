@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @GetMapping
-    public String getUser(){
-        return "get user was called";
+    public String getUsers(
+            @RequestParam(value="page", defaultValue="1") int page,
+            @RequestParam(value="limit", defaultValue="50") int limit,
+            @RequestParam(value="sort",defaultValue="desc", required=false) String sort)
+    {
+        return "get user was called, page = " + page + " limit = " + limit + " sort = " + sort;
+
     }
 
-    @GetMapping("/{id}")
-    public String getUserById(@PathVariable Long id){
-        return "get user by id: " + id + " was called";
+    @GetMapping("/{userId}")
+    public String getUserById(@PathVariable String userId){
+        return "get user by id: " + userId + " was called";
     }
 
     @PostMapping
@@ -22,14 +27,14 @@ public class UserController {
         return "create user was called";
     }
 
-    @PutMapping
-    public String updateUser(){
+    @PutMapping("{userId}")
+    public String updateUser(@PathVariable String userId){
         return "update user was called";
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable Long id){
-        return "delete user with id: " + id + " was called";
+    @DeleteMapping("/{userId}")
+    public String deleteUser(@PathVariable String userId){
+        return "delete user with id: " + userId + " was called";
     }
 
 }
