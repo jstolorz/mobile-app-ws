@@ -1,5 +1,9 @@
 package com.bluesoft.app.ws.ui.controller;
 
+import com.bluesoft.app.ws.ui.model.response.UserRest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +21,14 @@ public class UserController {
 
     }
 
-    @GetMapping("/{userId}")
-    public String getUserById(@PathVariable String userId){
-        return "get user by id: " + userId + " was called";
+    @GetMapping(value = "/{userId}",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<UserRest> getUserById(@PathVariable String userId){
+        UserRest user = new UserRest();
+        user.setFirstName("Janusz");
+        user.setLastName("Stolorz");
+        user.setEmail("janusz@op");
+        return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
     @PostMapping
