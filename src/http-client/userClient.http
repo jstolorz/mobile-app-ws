@@ -5,7 +5,7 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/users/1
+GET http://localhost:8080/users/7323d08d-7645-4452-8df8-67a0c8e19091
 Content-Type: application/json
 Accept: application/json
 #Accept: application/xml
@@ -23,22 +23,26 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "id": "1"
+  "firstName": "Janusz",
+  "lastName": "Stolorz",
+  "email": "janusz@op.pl",
+  "password": "1234"
 }
 
 ###
 
-PUT http://localhost:8080/users
+PUT http://localhost:8080/users/474304b2-f8a6-404d-8563-63c801b1b17b
 Content-Type: application/json
 Accept: application/json
 
 {
-  "id": "1"
+  "firstName": "Janusz22",
+  "lastName": "Stolorz22"
 }
 
 ###
 
-DELETE http://localhost:8080/users/1
+DELETE http://localhost:8080/users/a01bb674-4603-4ab9-a211-312fbfd5008a
 Content-Type: application/json
 Accept: application/json
 
